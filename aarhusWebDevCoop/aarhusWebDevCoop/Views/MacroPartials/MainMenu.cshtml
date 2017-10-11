@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+<nav class="nav-bar navbar-default">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+    	@foreach(var item in CurrentPage.Site().Children.Where("Visible")){
+    		if(item.Name == "Projects") {
+    		<li class="dropdown">
+    		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">@item.Name <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+				    <li><a href="@item.Url">@item.Name</a></li>
+				    <li role="separator" class="divider"></li>
+    			@foreach(var subItem in item.Children.Where("Visible")) {
+                    if(subItem.projectStatus == "Completed") { 
+    			    <li><a href="@subItem.Url">@subItem.Name</a></li>
+                    }
+    			}
+    			</ul>
+    		</li>
+    		} else {
+    		    <li><a href="@item.Url">@item.Name</a></li>
+    		}
+    	}
+        </ul>
+    </div>
+</nav>

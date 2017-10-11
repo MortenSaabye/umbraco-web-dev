@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.TextPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+<div class="container center">
+    <h2>@Umbraco.Field("pageTitle")</h2>
+    <p>@Umbraco.Field("pageContent")</p>
+</div>
+@Html.GetGridHtml(Model.Content, "points")

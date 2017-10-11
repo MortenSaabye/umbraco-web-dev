@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta name="Description" content="@Umbraco.Field("metaDescription", recursive: true)">
+        <meta name="Keywords" content="@Umbraco.Field("metaKeywords", recursive: true)">
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/Site.css" rel="stylesheet" />
+    </head>
+    <body class="container">
+        <header>
+            <h1 class="center">Arhus Webdeveloper group</h1>
+            @Umbraco.RenderMacro("MainMenu")
+            @CurrentPage.HeaderTitle
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+        <footer class="container footer">
+            @Umbraco.Field("footerContent", recursive: true)
+        </footer>
+        <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </body>
+</html>
